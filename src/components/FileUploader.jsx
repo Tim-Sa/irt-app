@@ -2,8 +2,6 @@ import { PlusOutlined } from '@ant-design/icons';
 import { Form, Upload, } from 'antd';
 
 
-
-
 const normFile = (e) => {
   if (Array.isArray(e)) {
     return e;
@@ -14,14 +12,27 @@ const normFile = (e) => {
 
 const FileUploader = () => {
 
+  const props = {
+    name: 'file',
+    action: 'http://193.124.112.59:50052/irt',
+    listType: 'picture-card',
+
+    onChange(info) {
+      if (info.file.status === 'done') {
+          // Handle response from API
+          console.log(info.file.response);
+      }
+    },
+  };
+
   return (
     <>
       <Form
         labelCol={{
-          span: 4,
+          span: 14,
         }}
         wrapperCol={{
-          span: 14,
+          span: 20,
         }}
         layout="horizontal"
         style={{
@@ -29,7 +40,9 @@ const FileUploader = () => {
         }}
       >
         <Form.Item label="Upload your test data here" valuePropName="file" getValueFromEvent={normFile} method="post">
-          <Upload action="http://193.124.112.59:50052/irt" listType="picture-card">
+
+          <Upload {...props}>
+            
             <button
               style={{
                 border: 0,
@@ -37,7 +50,9 @@ const FileUploader = () => {
               }}
               type="button"
             >
+
               <PlusOutlined />
+
               <div
                 style={{
                   marginTop: 8,
@@ -45,9 +60,13 @@ const FileUploader = () => {
               >
                 Upload
               </div>
+            
             </button>
+
           </Upload>
+
         </Form.Item>
+
       </Form>
     </>
   );
