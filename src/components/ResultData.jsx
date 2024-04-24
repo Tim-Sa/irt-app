@@ -34,7 +34,8 @@ const ResultData = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+    <div
+    style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
       <div>
         <FileUploader onFileUpload={handleFileUpload} />
         {loading && <Spin />}
@@ -43,7 +44,8 @@ const ResultData = () => {
         {difficultData.length === 0 ? <Spin /> : <DataTable title="Difficult of Task" data={difficultData} />}
         {abilitiesData.length === 0 ? <Spin /> : <DataTable title="Subject Abilities" data={abilitiesData} />}
       </div>
-    </div>
+    </div>        
+
   );
   
 };

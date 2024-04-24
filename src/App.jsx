@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <h1>Rasch model</h1>
-      <div>
+      <div class="black-bg-white-text">
           <ResultData />
       </div>
     </>
