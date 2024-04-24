@@ -34,13 +34,18 @@ const ResultData = () => {
   };
 
   return (
-    <div>
-      <FileUploader onFileUpload={handleFileUpload} />
-      {loading ? <Spin /> : null}
-      {difficultData.length === 0 ? <Spin /> : <DataTable title="Difficult of Task" data={difficultData} />} 
-      {abilitiesData.length === 0 ? <Spin /> : <DataTable title="Subject Abilities" data={abilitiesData} />} 
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+      <div>
+        <FileUploader onFileUpload={handleFileUpload} />
+        {loading && <Spin />}
+      </div>
+      <div style={{ display: 'flex', gap: '20px' }}>
+        {difficultData.length === 0 ? <Spin /> : <DataTable title="Difficult of Task" data={difficultData} />}
+        {abilitiesData.length === 0 ? <Spin /> : <DataTable title="Subject Abilities" data={abilitiesData} />}
+      </div>
     </div>
   );
+  
 };
 
 export default ResultData;

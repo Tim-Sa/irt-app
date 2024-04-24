@@ -37,7 +37,7 @@ const FileUploader = ({ onFileUpload }) => {
         maxWidth: 600,
       }}
     >
-      <Form.Item label="Upload your test data here" valuePropName="file" getValueFromEvent={normFile} method="post">
+      <Form.Item label="" valuePropName="file" getValueFromEvent={normFile} method="post">
         <Upload {...props}>
           <button
             style={{

@@ -6,11 +6,6 @@ const DataTable = ({ title, data }) => {
 
   const columns = [
     {
-      title: 'Key',
-      dataIndex: 'key',
-      key: 'key',
-    },
-    {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
