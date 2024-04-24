@@ -1,6 +1,5 @@
 import './App.css'
-import FileUploader  from './components/FileUploader'
-
+import ResultData from './components/ResultData'
 
 function App() {
 
@@ -8,7 +7,7 @@ function App() {
     <>
       <h1>Rasch model</h1>
       <div>
-          <FileUploader />
+          <ResultData />
       </div>
     </>
   )
