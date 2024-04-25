@@ -1,2 +1,2 @@
-# irt_app
+# irt-app
 web app for IRT-0 model
