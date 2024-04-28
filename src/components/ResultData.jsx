@@ -1,21 +1,16 @@
 import React, { useState } from 'react';
+import { Spin } from 'antd';
 import DataTable from './DataTable';
 import FileUploader from './FileUploader';
-import { Spin } from 'antd';
+import ErrorCard from './ErrorCard';
 
 const ResultData = () => {
   // Set initial data for difficultData and abilitiesData
-  const [difficultData, setDifficultData] = useState([
-    { name: 'Task 1', difficulty: 0.0 },
-    { name: 'Task 2', difficulty: 0.0 },
-    // Add more initial data items as needed
-  ]);
+  const [difficultData, setDifficultData] = useState([]);
 
-  const [abilitiesData, setAbilitiesData] = useState([
-    { name: 'Subject 1', score: 0.0 },
-    { name: 'Subject 2', score: 0.0 },
-    // Add more initial data items as needed
-  ]);
+  const [abilitiesData, setAbilitiesData] = useState([]);
+
+  const [error, setError] = useState(0);
 
   const [loading, setLoading] = useState(false);
 
@@ -26,7 +21,8 @@ const ResultData = () => {
     setTimeout(() => {
       const abilities = responseData.abilities;
       const difficult = responseData.difficult;
-
+      const modelError = responseData.err;
+      setError(modelError)
       setAbilitiesData(abilities);
       setDifficultData(difficult ? difficult : []); // Set difficultData to empty array if it is not present
       setLoading(false); // Hide spinner after data is received
@@ -40,9 +36,12 @@ const ResultData = () => {
         <FileUploader onFileUpload={handleFileUpload} />
         {loading && <Spin />}
       </div>
-      <div style={{ display: 'flex', gap: '20px' }}>
-        {difficultData.length === 0 ? <Spin /> : <DataTable title="Difficult of Task" data={difficultData} />}
-        {abilitiesData.length === 0 ? <Spin /> : <DataTable title="Subject Abilities" data={abilitiesData} />}
+      <div>
+      <ErrorCard error={error} />
+      </div>
+      <div style={{ display: 'flex', gap: '50px' }}>
+        <DataTable title="Difficult of Task" data={difficultData} />
+        <DataTable title="Subject Abilities" data={abilitiesData} />
       </div>
     </div>        
 
